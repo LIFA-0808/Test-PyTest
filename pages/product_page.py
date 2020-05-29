@@ -21,6 +21,6 @@ class ProductPage(BasePage):
         assert name == alert_name, "Wrong Product name"
 
     def should_be_basket_price(self):
-        basket = self.browser.find_element(*ProductPageLocators.BASKET_MINI).text.split(" ")[2][:5]
+        basket = self.browser.find_element(*ProductPageLocators.BASKET_MINI).text
         alert_basket = self.browser.find_element(*ProductPageLocators.ALERT_BASKET).text
         assert basket == alert_basket, "Wrong Basket sum"
