@@ -1,6 +1,5 @@
 from .base_page import BasePage
 from .locators import LoginPageLocators
-from selenium.common.exceptions import NoSuchElementException
 
 
 class LoginPage(BasePage):
@@ -11,7 +10,6 @@ class LoginPage(BasePage):
 
     def should_be_login_url(self):
         current_url = self.url
-
         assert "/login" in current_url, "Wrong URL"
 
     def should_be_login_form(self):
