@@ -6,6 +6,7 @@ import pytest
 import time
 
 
+@pytest.mark.need_review
 class TestGuestAddProduct:
     offer_list = ["offer0", "offer1", "offer2", "offer3", "offer4", "offer5", "offer6",
                   pytest.param("offer7", marks=pytest.mark.xfail), "offer8", "offer9"]
@@ -34,6 +35,7 @@ class TestLoginFromProductPage:
         page.open()
         page.should_be_login_link()
 
+    @pytest.mark.need_review
     def test_guest_can_go_to_login_page_from_product_page(self, browser):
         link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
         page = ProductPage(browser, link)
@@ -82,6 +84,7 @@ class TestUserAddToBasketFromProductPage:
         page.open()
         page.should_not_be_success_message()
 
+    @pytest.mark.need_review
     def test_user_can_add_product_to_basket(self, browser):
         link = f"http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=newYear"
         page = ProductPage(browser, link)
@@ -89,3 +92,4 @@ class TestUserAddToBasketFromProductPage:
         page.should_be_able_to_add_product_to_basket()
 
 # pytest -v --tb=line --language=en test_product_page.py
+# pytest -v --tb=line --language=en -m need_review
